@@ -20,7 +20,8 @@ This theme is intended for the private use of The Wild Side, and may not be used
 5. Post/Messages List
 6. Mini Profile
 7. User Profile
-8. Member Page
+8. Edit User Profile
+9. Member Page
 
 ## Acknowledgements
 Special thanks to [Smangii](http://smangii.proboards.com/user/1) for his [ClearUBBC icons](http://smangii.proboards.com/thread/38879/clearubbc-icons-perfect-any-theme).
