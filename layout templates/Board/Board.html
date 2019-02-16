@@ -1,0 +1,67 @@
+{if $[display_thread_list]}
+
+    <!-- BEGIN THREAD CONTAINER -->
+    <div{if $[viewing_bookmarks]} id="bookmarks"{/if} class="container threads">
+
+        <!-- BEGIN TITLE BAR -->
+        <div class="title-bar">
+            {if $[create_thread_button]}
+                <ul class="controls"><li>$[create_thread_button]</li></ul>
+            {/if}
+
+            <h2>$[board.display_name]</h2>
+        </div>
+        <!-- END TITLE BAR -->
+
+        <!-- BEGIN CONTROL BAR -->
+        <div class="control-bar ui-helper-clearfix $[scroll_class]">
+            $[search]
+
+            <!-- Hide selection/action menus from guests since they are not usable -->
+            {if !$[current_user.is_guest]}
+                <div class="controls">
+                    $[selection_menu]
+                    $[action_menu]
+                </div>
+            {/if}
+
+            $[pagination]
+        </div>
+        <!-- END CONTROL BAR -->
+
+        <!-- BEGIN THREAD LIST -->
+        <div class="content">
+            <table class="list">
+                <tbody class="$[list_class]">
+                    $[thread_list]
+                </tbody>
+            </table>
+        </div>
+        <!-- END THREAD LIST -->
+
+    </div>
+    <!-- END THREAD CONTAINER -->
+
+{/if}
+
+{if $[board.sub_board_list]}
+
+    <!-- BEGIN SUB-BOARD CONTAINER -->
+    <div class="container boards">
+
+        <!-- BEGIN TITLE BAR -->
+        <div class="title-bar">
+            <h2>Sub-Boards</h2>
+        </div>
+        <!-- END TITLE BAR -->
+
+        <!-- BEGIN SUB-BOARD LIST -->
+        <div class="content">
+            $[board.sub_board_list]
+        </div>
+        <!-- END SUB-BOARD LIST -->
+
+    </div>
+    <!-- END SUB-BOARD CONTAINER -->
+
+{/if}

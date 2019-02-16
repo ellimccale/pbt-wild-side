@@ -1,0 +1,36 @@
+<!-- BEGIN ACTIVITY CONTAINER -->
+<div class="show-user__container">
+    {if $[can.set_status]}
+
+        <!-- BEGIN STATUS -->
+        <div class="show-user__status content-box">
+            $[form.header]
+
+            <table>
+                <tr id="status-bar">
+                    <td id="status-title-box" class="avatar">Status</td>
+                    <td id="status-input-box" class="main">$[form.update.input]</td>
+                    <td id="status-update-box" class="time-container">$[form.submit.button]</td>
+                </tr>
+            </table>
+
+            $[form.footer]
+        </div>
+        <!-- END STATUS -->
+
+    {/if}
+
+    <!-- BEGIN ACTIVITY LIST -->
+    <div class="show-user__activity content-box">
+        <table class="activity list">
+            <tbody class="$[activity_list_class]">
+                $[activity_list]
+            </tbody>
+        </table>
+
+        $[more_button]
+    </div>
+    <!-- END ACTIVITY LIST -->
+
+</div>
+<!-- END ACTIVITY CONTAINER -->

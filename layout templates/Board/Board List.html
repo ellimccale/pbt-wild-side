@@ -1,0 +1,72 @@
+{foreach $[board]}
+    {if !$[board.is_redirect]}
+
+        <!-- BEGIN NON-REDIRECT BOARDS -->
+        <div id="$[board.content_id]" class="$[board.content_class]">
+            <div class="main">
+                <p class="link">$[board] {if $[board.num_viewing]}<span class="viewing">$[board.num_viewing] Viewing</span>{/if}</p>
+                {if $[board.sub_board]}
+                    {foreach $[board.sub_board]}<a href="$[board.sub_board.href]" class="sub-board">$[board.sub_board.name]</a>{/foreach}
+                {/if}
+                <p class="description"><!-- This is a placeholder for the Board Description Images plugin --></p>
+            </div>
+            <div class="desc">
+                {if $[board.description]}<p>$[board.description]</p>{/if}
+            </div>
+            <div class="posts">
+                <span class="count">
+                    {if $[board.threads] == -1}
+                        N/A
+                    {else}
+                        <span>$[board.threads]</span>
+                        thread{if $[board.threads] != 1}s{/if}
+                    {/if}
+                </span>
+                <span class="count">
+                    {if $[board.posts] == -1}
+                        N/A
+                    {else}
+                        <span>$[board.posts]</span>
+                        post{if $[board.posts] != 1}s{/if}
+                    {/if}
+                </span>
+            </div>
+            <div class="latest">
+                {if $[board.posts] > 0}
+                    {if $[board.last_thread]}
+                        <p>$[board.last_thread.recent_link]<br>
+                           by $[board.last_thread.last_post.created_by]</p>
+                        <p>$[board.last_thread.last_post.created_on]</p>
+                    {/if}
+                {else}
+                    <p>No posts have been made on this&nbsp;board.</p>
+                {/if}
+            </div>
+        </div>
+        <!-- END NON-REDIRECT BOARDS -->
+
+    {else}
+
+        <!-- BEGIN REDIRECT BOARDS -->
+        <div id="$[board.content_id]" class="$[board.content_class]">
+            <div class="main redirect">
+                <p class="link">$[board]</p>
+            </div>
+            {if $[board.description]}
+                <div class="desc">
+                    <p>$[board.description]</p>
+                </div>
+            {/if}
+        </div>
+        <!-- END REDIRECT BOARDS -->
+
+    {/if}
+{/foreach}
+
+{if !$[board]}
+    <div class="board item">
+        <div class="desc">
+            <p>No boards were found.</p>
+        </div>
+    </div>
+{/if}

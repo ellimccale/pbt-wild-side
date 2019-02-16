@@ -1,0 +1,30 @@
+<!-- BEGIN FOLLOWING CONTAINER -->
+<div class="show-user__container">
+
+    <!-- BEGIN FOLLOWING LIST -->
+    <table class="following list">
+        <colgroup>
+            <col class="avatar">
+            <col>
+            <col class="time-container">
+        </colgroup>
+        <thead>
+            <tr class="heading">
+                <th colspan="3">
+                    {if $[total_following]}
+                        This member is following $[following_link]. Their activity is displayed below.
+                    {else}
+                        This member is not following any other members.
+                    {/if}
+                </th>
+            </tr>
+        </thead>
+        <tbody class="$[activity_list_class]">
+            $[activity_list]
+        </tbody>
+    </table>
+    <!-- END FOLLOWING LIST -->
+
+    $[more_button]
+</div>
+<!-- END FOLLOWING CONTAINER -->

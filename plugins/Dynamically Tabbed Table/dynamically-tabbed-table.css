@@ -1,0 +1,30 @@
+/* Tab item list */
+div.dtt-item-list {
+    width: auto;
+    padding: 7px;
+    text-align: center;
+}
+
+div.dtt-item-list > ul > li {
+    margin: 0 13px;
+    display: inline;
+}
+
+div.dtt-item-list > ul > li > a {
+    font-weight: bold;
+}
+
+div.dtt-item-content {
+    width: auto;
+    padding: 7px;
+    text-align: center;
+}
+
+/** Be careful when modifying the clases below */
+.dtt_tabs_content {
+    border-width: 0 !important;
+}
+
+table.dtt {
+    display: none;
+}

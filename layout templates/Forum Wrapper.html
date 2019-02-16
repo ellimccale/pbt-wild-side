@@ -1,0 +1,555 @@
+<!DOCTYPE HTML>
+    $[tag.html.open]
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+        <title>$[title] | $[forum.name]</title>
+
+        $[head]
+
+        <!-- Font Awesome 5.0.13 -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+        <!-- Google Fonts: Montserrat -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i" rel="stylesheet">
+
+        <script>
+        $(document).ready(function() {
+            /**
+             * Create darkened overlay behind modals
+             * Has to be in `head` to load in the right order
+             */
+            (function darkenDialogOverlay() {
+                var $dialogSelectors = $('#guests-online, #poll-dialog, #threads-list-search-dialog, #posts-list-search-dialog, #members-list-search-dialog, #image-avatar-editor-container');
+
+                if ($dialogSelectors.length) {
+                    $dialogSelectors.dialog('option', 'modal', true);
+                } else {
+                    $(document).on('dialogcreate', function(event) {
+                        if (event.target.id == 'guests-online' || 'poll-dialog' || 'threads-list-search-dialog' || 'posts-list-search-dialog' || 'members-list-search-dialog' || 'image-avatar-editor-container') {
+                            $(event.target).dialog('option', 'modal', true);
+                        }
+                    });
+                }
+            })();
+        });
+        </script>
+    </head>
+    <body>
+        {if $[maintenance_mode]}
+            <div class="maintenance-header">
+                {if $[can.disable_maintenance]}<p>Finished with maintenance? $[disable_maintenance_link].</p>{/if}
+            </div>
+        {/if}
+
+        <!-- BEGIN HEADER -->
+        <header>
+
+            <!-- BEGIN NAVIGATION -->
+            <nav role="navigation">
+                <!-- Links for screen readers to skip to content -->
+                <a id="navigation-skip" href="#content" accesskey="s" class="aria-hidden" title="Skip Navigation">Skip Navigation</a>
+                <a href="#" accesskey="d" title="Open Menu" onclick="proboards.hotkeys.activate(Keys.d); return false;"></a>
+
+                <div id="navigation-menu" class="ui-helper-clearfix">
+                    <ul>
+                        {foreach $[navigation.menu]}
+                            <li{if $[navigation.menu.active]} class="state-active"{/if}>
+                                <a href="$[navigation.menu.href]"{if $[navigation.menu.accesskey]} accesskey="$[navigation.menu.accesskey]"{/if}>
+                                    $[navigation.menu.name]
+                                    {if $[navigation.menu.notification.total]}
+                                        <div class="tip-holder" onclick="window.location='$[navigation.menu.notification.href]'; return false;">
+                                            <div class="tip-number">$[navigation.menu.notification.total]</div>
+                                        </div>
+                                    {/if}
+                                </a>
+                            </li>
+                        {/foreach}
+                        {if !$[current_user.is_guest]}
+                            <li>
+                                <a href="$[logout_link.href]" class="$[logout_link.href]">Logout</a>
+                            </li>
+                        {else}
+                            <li>
+                                <a href="$[login_link.href]" target="_parent" class="$[login_link.class]">Login</a>
+                            </li>
+                            <li>
+                                <a href="$[register_link.href]" target="_parent" class="$[register_link.class]">Register</a>
+                            </li>
+                        {/if}
+                    </ul>
+                </div>
+            </nav>
+            <!-- END NAVIGAION -->
+
+            <a href="/" target="_parent" class="banner">
+                <!-- Forum title visible only to screen readers -->
+                <h1 class="aria-hidden">
+                    $[forum.name]
+                </h1>
+            </a>
+        </header>
+        <!-- END HEADER -->
+
+        $[header]
+
+        <!-- Only show Welcome Table on Home page -->
+        {if $[route.name] == 'home'}
+
+        	<!-- BEGIN WELCOME TABLE -->
+        	<div class="welcome">
+
+                <!-- BEGIN TABS LIST -->
+                <ul class="tabs__list">
+                    <li class="tabs__list-item tabs__list-item--active">
+                        <span>Welcome</span>
+                    </li>
+                    <li class="tabs__list-item">
+                        <span>Census</span>
+                    </li>
+                </ul>
+                <!-- END TABS LIST -->
+
+                <!-- BEGIN TAB 1 CONTENT -->
+                <div class="tabs__content tabs__content--active">
+
+                    <!-- BEGIN CONTAINING ROW -->
+                    <div class="welcome__row">
+
+                        <!-- BEGIN "INTRO" -->
+                        <div class="welcome__content welcome__content--intro">
+							<div class="welcome__title">
+                                <p>Welcome to The Wild Side</p>
+                            </div>
+                            <div class="welcome__avatar">
+                                $[current_user.avatar]
+                            </div>
+                            <div class="welcome__text welcome__text--intro">
+                                <div class="welcome__text-inner">
+
+                                    <!-- Update the intro text here -->
+                                    <p>The line between right and wrong is blurred. In the vast expanse of this strange land, you may find an array of different stories: from the Clan Cats, to the Roamers, to the Wolves, to the Regals, and to the Eindrides. Deciding which side you're on may be easy, but, deciding what to believe is the hard part. As the Wolves are being hunted, the Regals are being feared, and the Roamers are being accused. Everyone has their secrets, everyone has their faults&mdash;even the Clan Cats. No two canines are alike just as no two felines are the same. Each group makes up their own laws believing their ways and customs are superior to another; that their way of life is the only way to prosper. Joining a pack or clan could very well lead to your success or demise. Everywhere you turn a new enemy faces you, baring their teeth at your neck. Everywhere you look, there's betrayal, heartbreak, and war. To make matters worse, Mother Nature is cruel. Her unforgiving manner has no time to care who you are or what you've been through. Your decisions decide the outcome as the seasons change, as well as your&nbsp;loyalties.</p>
+                                    <p>This is a third-person roleplay site with one account per character, with a small twist: there are no humans and we support Warrior Cat roleplay as well as a Canine roleplay! Don't worry if you only like one as these two animals will never meet in&nbsp;roleplay.</p>
+                                    <p>With darkness and light clashing, brewing under the surface, what side will you choose? Mother Nature isn't the only one to fear in the Wilderness&hellip; welcome to THE&nbsp;WILD&nbsp;SIDE.
+</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END "INTRO" -->
+
+                        <!-- BEGIN "STAFF" -->
+                        <div class="welcome__content welcome__content--staff">
+
+                            <!--
+							  NOTE: Adding or removing staff members will throw off the column sizing.
+							        You will need to adjust the max-width and flex-basis of
+							        `.welcome__content--intro` and `.welcome__content--staff` in the
+							        stylesheet to account for changes to staff images.
+							        `alt` text remains empty because nearby text describes the image.
+							   -->
+							<a href="#" target="_parent" class="hover-avatar hover-avatar--staff">
+                                <span>Staff Member</span>
+                                <img src="http://placehold.it/85x147/202428/bcbdbd" alt="">
+                            </a>
+							<a href="#" target="_parent" class="hover-avatar hover-avatar--staff">
+                                <span>Staff Member</span>
+                                <img src="http://placehold.it/85x147/202428/bcbdbd" alt="">
+                            </a>
+							<a href="#" target="_parent" class="hover-avatar hover-avatar--staff">
+                                <span>Staff Member</span>
+                                <img src="http://placehold.it/85x147/202428/bcbdbd" alt="">
+                            </a>
+							<a href="#" target="_parent" class="hover-avatar hover-avatar--staff">
+                                <span>Staff Member</span>
+                                <img src="http://placehold.it/85x147/202428/bcbdbd" alt="">
+                            </a>
+							<a href="#" target="_parent" class="hover-avatar hover-avatar--staff">
+                                <span>Staff Member</span>
+                                <img src="http://placehold.it/85x147/202428/bcbdbd" alt="">
+                            </a>
+							<a href="#" target="_parent" class="hover-avatar hover-avatar--staff">
+                                <span>Staff Member</span>
+                                <img src="http://placehold.it/85x147/202428/bcbdbd" alt="">
+                            </a>
+
+                        </div>
+                        <!-- END "STAFF" -->
+
+                    </div>
+                    <!-- END CONTAINING ROW -->
+
+                    <!-- BEGIN CONTAINING ROW -->
+                    <div class="welcome__row">
+
+                        <!-- BEGIN "UPDATES" -->
+                        <div class="welcome__content welcome__content--updates">
+							<div class="welcome__title">
+                                <p>Updates</p>
+                            </div>
+                            <div class="welcome__text welcome__text--updates">
+                                <div class="welcome__text-inner">
+
+                                    <!-- Add new updates here -->
+                                    <p>Live-edge ethical bushwick, taiyaki bicycle rights truffaut tofu kale chips craft beer food truck unicorn gochujang master cleanse. Celiac keytar umami kogi direct trade. Letterpress 3 wolf moon ramps distillery iceland pitchfork beard fixie sustainable ethical VHS man bun bespoke street art.</p>
+                                    <p>Gluten-free wayfarers sriracha fixie, forage subway tile palo santo yr. Affogato flannel schlitz skateboard. Woke mixtape photo booth cardigan, flexitarian fingerstache PBR&amp;B four dollar toast adaptogen aesthetic pork belly tbh helvetica iPhone.</p>
+
+                                </div>
+                            </div>
+                            <div class="welcome__weather-icon">
+                                <!--
+								  Weather icon should fit within 36px by 36px.
+								  `alt` text remains empty because nearby text describes the image.
+								  -->
+                                <img src="http://placehold.it/36x36/2e353a/bcbdbd" alt="">
+                            </div>
+                            <div class="welcome__weather">
+                                <p>
+                                    <span>Weather, Year XX</span><br>
+                                    Next Season Change: <span>XX</span>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- END "UPDATES" -->
+
+                        <!-- BEGIN "QUICK LINKS" -->
+                        <div class="welcome__content welcome__content--links">
+							<div class="welcome__title">
+                                <p>Quick Links</p>
+                            </div>
+                            <div class="welcome__links">
+
+                                <!--
+								  NOTE: Adding or removing links will throw off the height of the row.
+								        You will need to adjust the max-height of `.welcome__text--updates`
+								        in the stylesheet to account for changes to links.
+								  -->
+                                <a href="#" target="_parent">The Rules</a>
+                                <a href="#" target="_parent">Warrior Code</a>
+                                <a href="#" target="_parent">FAQ</a>
+                                <a href="#" target="_parent">The Gods</a>
+                                <a href="#" target="_parent">Main Plot</a>
+                                <a href="#" target="_parent">Application</a>
+                                <a href="#" target="_parent">Used Names</a>
+                                <a href="#" target="_parent">Clan Transfer</a>
+                                <a href="#" target="_parent">Punishment THread</a>
+                                <a href="#" target="_parent">Queen Adoption</a>
+
+                            </div>
+                        </div>
+                        <!-- END "QUICK LINKS" -->
+
+                    </div>
+                    <!-- END CONTAINING ROW -->
+
+                </div>
+                <!-- END TAB 1 CONTENT -->
+
+                <!-- BEGIN TAB 2 CONTENT -->
+                <div class="tabs__content">
+
+                    <!-- BEGIN "HIGH POSITIONS" -->
+					<div id="move-dtt" class="welcome__content"></div>
+                    <!-- END "HIGH POSITIONS" -->
+
+                    <!-- BEGIN CONTAINING ROW -->
+                    <div class="welcome__row">
+
+                        <!-- BEGIN "CENSUS" -->
+                        <div class="welcome__content welcome__content--clan-census">
+                            <div class="welcome__title">
+                                <p>Clan Census</p>
+                            </div>
+                            <div class="welcome__clan-census">
+
+                                <!-- Update census data here -->
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Clan</th>
+                                            <th class="link">Census</th>
+                                            <th class="link">Ceremony</th>
+                                            <th class="count"><span style="background-color: #c95c76;" title="Female">Female</span></th>
+                                            <th class="count"><span style="background-color: #839ba8;" title="Male">Male</span></th>
+                                            <th class="count"><span title="Total">Total</span></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td style="color: #56a4b8;">Stormclan</td>
+                                            <td class="link">
+                                                <a href="#" target="_parent">Census</a>
+                                            </td>
+                                            <td class="link">
+                                                <a href="#" target="_parent">Ceremony</a>
+                                            </td>
+                                            <td class="count">78</td>
+                                            <td class="count">87</td>
+                                            <td class="count">165</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="color: #71b456;">Forestclan</td>
+                                            <td class="link">
+                                                <a href="#" target="_parent">Census</a>
+                                            </td>
+                                            <td class="link">
+                                                <a href="#" target="_parent">Ceremony</a>
+                                            </td>
+                                            <td class="count">37</td>
+                                            <td class="count">40</td>
+                                            <td class="count">77</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="color: #d35e5e;">Beastclan</td>
+                                            <td class="link">
+                                                <a href="#" target="_parent">Census</a>
+                                            </td>
+                                            <td class="link">
+                                                <a href="#" target="_parent">Ceremony</a>
+                                            </td>
+                                            <td class="count">75</td>
+                                            <td class="count">75</td>
+                                            <td class="count">150</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="color: #e9803b;">Roamers</td>
+                                            <td class="link">
+                                                <a href="#" target="_parent">Census</a>
+                                            </td>
+                                            <td class="link">
+                                                <a href="#" target="_parent">Ceremony</a>
+                                            </td>
+                                            <td class="count">45</td>
+                                            <td class="count">35</td>
+                                            <td class="count">80</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="color: #c17dd8;">Tribe Haven</td>
+                                            <td class="link">
+                                                <a href="#" target="_parent">Census</a>
+                                            </td>
+                                            <td class="link">
+                                                <a href="#" target="_parent">Ceremony</a>
+                                            </td>
+                                            <td class="count">11</td>
+                                            <td class="count">08</td>
+                                            <td class="count">19</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                        <!-- END "CENSUS" -->
+
+                        <!-- BEGIN "CLAN UPDATES" -->
+                        <div class="welcome__content welcome__content--clan-updates">
+                            <div class="welcome__title">
+                                <p>Clan Updates</p>
+                            </div>
+                            <div class="welcome__text welcome__text--clan-status">
+                                <div class="welcome__text-inner">
+
+                                    <!-- Clan status here -->
+                                    <p><span>Encouragements:</span> All</p>
+                                    <p><span>Bans:</span> App made Apprentices in any clan</p>
+
+                                </div>
+                            </div>
+                            <div class="welcome__text welcome__text--clan-updates">
+								<div class="welcome__text-inner">
+
+                                    <!-- Clan updates here -->
+                                    <p>Main Plot Morningstar finally kicked the roamers out but at what cost, the clan remains cursed and now Kiran and Fallow have started a 'tribe'. The gods have gone silent and even left the clans leaving them to feel empty, slowly everyone will start to realize just why they feel empty and perhaps they will even heard word of the Tribe.</p>
+                                    <p>Branch Plot Wolfstar and Aspenstar have a connection, perhaps are even soul mates leaving members to think the gods are even more invovled in this. Their kits have caused a small ruckus in both clans, cats don't agree with this perhaps it will settle down with time&helip; one can only hope.</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END "CLAN UPDATES" -->
+
+                    </div>
+                    <!-- END CONTAINING ROW -->
+
+                </div>
+                <!-- END TAB 2 CONTENT -->
+
+        	</div>
+        	<!-- END WELCOME TABLE -->
+
+        {/if}
+
+        <!-- BEGIN MAIN CONTENT -->
+        <div id="wrapper">
+
+            <!-- Do not show nav tree on Home page -->
+            {if $[navigation.tree] && $[route.name] != 'home'}
+
+            	<!-- BEGIN NAVIGATION TREE -->
+                <div id="navigation-tree">
+                    $[navigation.tree]
+                </div>
+            	<!-- END NAVIGATION TREE -->
+
+            {/if}
+
+            <main id="content" role="main">
+                {if $[notice]}
+
+                	<!-- BEGIN NOTICE CONTAINER -->
+                    <div class="container">
+
+                        <!-- BEGIN TITLE BAR -->
+                        <div class="title-bar">
+                            <h2>$[notice.title]</h2>
+                        </div>
+                        <!-- END TITLE BAR -->
+
+                        <!-- BEGIN NOTICE MESSAGE -->
+                        <div class="content">
+                            $[notice.message]
+                        </div>
+                        <!-- END NOTICE MESSAGE -->
+
+                    </div>
+                	<!-- END NOTICE CONTAINER -->
+
+                {/if}
+
+                $[content]
+            </main>
+        </div>
+        <!-- END MAIN CONTENT -->
+
+        $[footer]
+
+        <!-- clem : You may optionally remove this, but I'd be very happy if it could stay -->
+        <div class="c-footer__copyright"><p>Theme built exclusively for The Wild Side by <a href="https://ellimccale.com/" target="_blank">elli mccale</a>.</p></div>
+
+        <!--
+		  This link only appears on mobile browsers, and gives users the option to
+		  switch to the mobile version of the forum.
+		  -->
+        {if $[is_mobile_browser]}
+            <p id="js-switch-link">Switch to the $[mobile_switch_link].</p>
+        {/if}
+
+        <!--
+          These are the scripts that control the custom behavior of the theme.
+          Individual behaviors are wrapped in immediately invoked function expressions.
+          Tread carefully, as JavaScript can be delicate.
+		  Additional scripts can be found in the layout templates they affect, such as
+		  the Post and Message lists.
+          -->
+        <script>
+        $(document).ready(function(){
+            // Add lang attribute to `html` tag for accessibility
+            (function addLang() {
+                $('html').prop('lang', 'en-us');
+            })();
+
+            // Add containers to ads
+            (function containAds() {
+                $('iframe#ad1').wrap('<div class="ad-banner ad-banner--top"></div>');
+                $('iframe#ad3').parent().attr('class', 'ad-banner ad-banner--bottom');
+            })();
+
+            // Append mobile switch link
+            (function modFooter() {
+                var $footer = $('.c-footer');
+
+                $('#js-switch-link').appendTo($footer);
+            })();
+            
+            // Remove double angle quotes from pagination
+            (function removeAngleQuotes() {
+                var $pageNext = $('.ui-pagination-next > a');
+                var $pagePrev = $('.ui-pagination-prev > a');
+
+                $pageNext.text($pageNext.text().replace('»', ''));
+                $pagePrev.text($pagePrev.text().replace('«', ''));
+            })();
+
+            // Tabbed Welcome Table
+            (function welcomeTabs() {
+                var $currentTab = 0;
+
+                function openTab(clickedTab) {
+                    var $thisTab = $('.tabs__list-item').index(clickedTab);
+
+                    $('.tabs__list-item').removeClass('tabs__list-item--active');
+                    $('.tabs__list-item:eq(' + $thisTab + ')').addClass('tabs__list-item--active');
+                    $('.tabs__content').hide();
+                    $('.tabs__content:eq(' + $thisTab + ')').show();
+
+                    $currentTab = $thisTab;
+                }
+
+                $('.tabs__list-item').click(function() { 
+                    openTab($(this));
+                    return false; 
+                });
+                
+                $('.tabs__list-item:eq(' + $currentTab + ')').click();
+            })();
+
+            // Replace default icons with Font Awesome glyphs
+            function replaceDefaultIcons() {
+                // Post interaction icons
+                $('.button .status > img').replaceWith('<i class="fas fa-cog"></i>');
+                $('.ui-search .search-filters-button .icon > img').replaceWith('<i class="fas fa-search"></i>');
+
+                function replaceLikeButton() {
+                    var $likeButtonImg = $('a.likes-button');
+
+                    $likeButtonImg.each(function() {
+                        if ($(this).hasClass('liked')) {
+                            $(this).children('img').replaceWith('<i class="fas fa-heart"></i>');
+                        } else {
+                            $(this).children('img').replaceWith('<i class="far fa-heart"></i>');
+                        }
+                    });
+                }
+                
+                function updateLikeButton() {
+                    if ($(this).hasClass('liked')) {
+                        $(this).children('i').removeClass('fas').addClass('far');
+                    } else {
+                        $(this).children('i').removeClass('far').addClass('fas');
+                    }
+                }
+
+                replaceLikeButton();
+                $('a.likes-button').on('click', updateLikeButton);
+
+                // Thread status icons
+                $('.lock_icon').append('<i class="fas fa-lock"></i>');
+                $('.bookmark_icon').append('<i class="far fa-bookmark"></i>');
+                $('.poll_icon').append('<i class="far fa-chart-bar"></i>');
+
+                var $trickyIcons = ['.lock_icon','.bookmark_icon','.poll_icon'];
+
+                $.each($trickyIcons, function(index, value) {
+                    $(value).each(function() {
+                        if ($(this).children('img').css('display') == 'none') {
+                            $(this).css('display','none');
+                        };
+                        $(this).find('img').remove();
+                    });
+                });
+
+                // Checkmark icon
+                var $checkContainer = $('.ui-poll .results tr td .select-box');
+
+                $checkContainer.each(function() {
+                    $(this).append($('<i class="fas fa-check"></i>'));
+                    $(this).children('img').remove();
+                });
+            }
+
+            replaceDefaultIcons();
+            pb.events.on('afterSearch', replaceDefaultIcons);
+        });
+        </script>
+    </body>
+</html>

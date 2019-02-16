@@ -1,0 +1,74 @@
+<!-- BEGIN EDIT USER CONTAINER -->
+<div class="container edit-user confirm-ignore-changes">
+
+  <!-- BEGIN TITLE BAR -->
+  <div class="title-bar">
+      <h2>Edit Profile &amp; Settings</h2>
+  </div>
+  <!-- END TITLE BAR -->
+
+  <!-- BEGIN TABS -->
+  <div class="ui-tabMenu">
+      <ul class="ui-helper-clearfix">
+          {foreach $[menu]} <!-- replace href with class -->
+              <li{if $[menu.active]} class="ui-active"{/if}><a class="js-tab" data-page="$[menu.href]">$[menu.text]</a></li>
+          {/foreach}
+      </ul>
+  </div>
+  <!-- END TABS -->
+
+  <!-- BEGIN TAB CONTENT -->
+  <div class="content">
+      <div class="pad info">
+          <span class="username float-right">Username: $[user.username]</span>
+          <span class="big_username" style="color: $[user.color];">$[user.name]</span><br>
+      </div>
+
+      <noscript>
+          <div class="content-box">Please enable Javascript for your browser to edit member profiles.</div>
+          <style> .js-enabled {display: none;} </style>
+      </noscript>
+
+      <div class="clear js-enabled">
+          <div class="js-edit admin-edit              $[edit_area.display_admin]">
+              $[edit_admin]
+          </div>
+          <div class="js-edit avatar-edit             $[edit_area.display_avatar]">
+              $[edit_avatar]
+          </div>
+          <div class="js-edit badges-edit             $[edit_area.display_badges]">
+              $[edit_badges]
+          </div>
+          <div class="js-edit personal-edit           $[edit_area.display_personal]">
+              $[edit_personal]
+          </div>
+          <div class="js-edit privacy-edit            $[edit_area.display_privacy]">
+              $[edit_privacy]
+          </div>
+          <div class="js-edit edit_notifications-edit $[edit_area.display_edit_notifications]">
+              $[edit_notifications]
+          </div>
+          <div class="js-edit settings-edit           $[edit_area.display_settings]">
+              $[edit_settings]
+          </div>
+          <div class="js-edit social-edit             $[edit_area.display_social]">
+              $[edit_social]
+          </div>
+      </div>
+  </div>
+  <!-- END TAB CONTENT -->
+
+</div>
+<!-- END EDIT USER CONTAINER -->
+
+<script>
+$(document).ready(function() {
+  // Add warning about avatar size to avatar tab
+  (function warnAvatar() {
+      var $avatarSettings = $('#avatar-options > .options').find('table.radio');
+      var message = ('<p style="margin:10px 0"><span class="bold">Reminder:</span> Avatars should be 200px by 200px, which is not supported by the ProBoards upload tool. Please upload your avatar to an external host (such as nickpic.host) and use the "Link Image" option to save your avatar settings.</p>')
+      
+      $avatarSettings.before(message);
+  })();
+});
+</script>

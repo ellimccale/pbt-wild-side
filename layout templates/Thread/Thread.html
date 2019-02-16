@@ -1,0 +1,79 @@
+<!-- BEGIN POSTS CONTAINER -->
+<div class="container posts">
+
+    <!-- BEGIN TITLE BAR -->
+    <div class="title-bar">
+        {if $[reply_button]}
+            <ul class="controls"><li>$[reply_button]</li></ul>
+        {/if}
+
+        <h2>$[thread.subject]</h2>
+    </div>
+    <!-- END TITLE BAR -->
+
+    <!-- BEGIN CONTROL BAR -->
+    <div class="control-bar ui-helper-clearfix $[scroll_class]">
+        $[search]
+
+        <div class="controls">
+            $[action_menu]
+        </div>
+
+        <div class="float-left">$[thread.icons]</div>
+
+        $[pagination]
+    </div>
+    <!-- END CONTROL BAR -->
+
+    <!-- BEGIN POST LIST -->
+    <div class="content">
+        $[thread.labels]
+
+        {if $[poll]}
+
+            <!-- BEGIN POLL CONTAINER -->
+            <div class="ui-poll-container">
+                $[poll]
+            </div>
+            <!-- END POLL CONTAINER -->
+
+        {/if}
+
+        <table class="list" role="presentation">
+            <tbody class="$[list_class]">
+                $[post_list]
+            </tbody>
+        </table>
+
+        {if !$[quick_reply]}
+            {if $[bottom_reply_button]}
+                <div class="reply_button pad-all-double">$[bottom_reply_button]<br class="clear" /></div>
+            {/if}
+        {/if}
+    </div>
+    <!-- END POST LIST -->
+
+</div>
+<!-- END POSTS CONTAINER -->
+
+$[quick_reply]
+
+<script>
+$(document).ready(function() {
+    // Remove custom mini profile fields if they are empty
+    function removeEmptyFields() {
+        $('.mini-profile').each(function() {
+            var $children = $(this).children('div, span');
+
+            $children.each(function() {
+                if ( !$.trim($(this).html()).length ) {
+                    $(this).remove();
+                }
+            });
+        });
+    }
+
+    removeEmptyFields();
+    pb.events.on('afterSearch', removeEmptyFields);
+});
+</script>

@@ -1,0 +1,16 @@
+<script type="text/javascript">
+    var vUserRanks = [
+        {foreach $[plugin.settings.ranks]}
+            [proboards.plugin.get('v_user_legend').settings.ranks[$[plugin.settings.ranks.index]].rank_name,'#$[plugin.settings.ranks.rank_color]']{if $[plugin.settings.ranks.index] != $[plugin.settings.ranks.lastIndex]},{/if}
+        {/foreach}
+    ];
+
+    $(document).ready(function() {
+        $('#user-legend').append('<div id="user-legend-text"></div><div id="user-legend-boxes"></div>');
+        $('#user-legend-text').append(proboards.plugin.get('v_user_legend').settings.legend_name);
+
+        for (x = 0; x < vUserRanks.length; x++) {
+        $('#user-legend-boxes').append('<div class="ul-box" title="'+vUserRanks[x][0]+'" style="background-color: '+vUserRanks[x][1]+'; margin-right: '+proboards.plugin.get('v_user_legend').settings.button_spacing+'; width: '+proboards.plugin.get('v_user_legend').settings.button_width+'; height: '+proboards.plugin.get('v_user_legend').settings.button_height+'; display: inline-block;"></div>');
+        }
+    });
+</script>

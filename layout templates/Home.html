@@ -1,0 +1,232 @@
+{foreach $[category]}
+
+    <!-- BEGIN CATEGORIES -->
+    <div class="container boards" id="category-$[category.id]">
+
+        <!-- BEGIN TITLE BAR -->
+        <div class="title-bar">
+            <h2>$[category.display_name]</h2>
+        </div>
+        <!-- END TITLE BAR -->
+
+        <!-- BEGIN BOARD LIST -->
+        <div class="content">
+            $[category.board_list]
+        </div>
+        <!-- END BOARD LIST -->
+
+    </div>
+    <!-- END CATEGORIES -->
+
+{/foreach}
+
+{if $[show_stats]}
+
+    <!-- BEGIN INFO CENTER -->
+    <div class="container stats">
+
+        <!-- BEGIN TITLE BAR -->
+        <div class="title-bar">
+            <h2>Information &amp; Statistics</h2>
+        </div>
+        <!-- END TITLE BAR -->
+
+        <!-- BEGIN CONTENT -->
+        <div class="content">
+
+            <!-- BEGING "CURRENTLY ONLINE" -->
+            <div class="stats__info">
+                <div class="stats__title">
+                    <p>Currently Online</p>
+                    <div id="user-legend"></div>
+                    <span>$[total_staff_online] Staff, $[total_members_online] Member{if $[total_members_online] != 1}s{/if}, {if $[view_guests_online_link]}<a href="#" class="$[view_guests_online_link.class]">{/if}$[total_guests_online] Guest{if $[total_guests_online] != 1}s{/if}{if $[view_guests_online_link]}</a>{/if}</span>
+                </div>
+                <div class="stats__users">
+                    {foreach $[online_user]}
+                        $[online_user]{if $[online_user.invisible]} <span class="small">(invisible)</span>{/if}$[online_user.comma]
+                    {/foreach}
+                    {if $[total_online_not_shown]}
+                        , and <a class="$[view_active_members_link.class]" href="$[view_active_members_link.href]">$[total_online_not_shown] more...</a>
+                    {/if}
+                </div>
+            </div>
+            <!-- END "CURRENTLY ONLINE" -->
+
+            <!-- BEGIN "RECENTLY ONLINE" -->
+            <div class="stats__info">
+                <div class="stats__title">
+                    <p>Recently Online</p>
+                    <span>$[total_staff_online_24] Staff, <a class="$[view_todays_active_members_link.class]" href="$[view_todays_active_members_link.href]">$[total_members_online_24] Member{if $[total_members_online_24] != 1}s{/if}</a>, $[total_guests_online_24] Guest{if $[total_guests_online_24] != 1}s{/if}</span>
+                </div>
+                <div class="stats__users">
+                    {foreach $[online_user_24]}
+                        $[online_user_24]{if $[online_user_24.invisible]} <span class="small">(invisible)</span>{/if}$[online_user_24.comma]
+                    {/foreach}
+                    {if $[total_online_not_shown_24]}
+                        , and <a class="$[view_todays_active_members_link.class]" href="$[view_todays_active_members_link.href]">$[total_online_not_shown_24] more...</a>
+                    {/if}
+                </div>
+            </div>
+            <!-- END "RECENTLY ONLINE" -->
+
+            <!-- BEGIN CONTAINING ROW -->
+            <div class="stats__row">
+
+                <!-- BEGIN "THREADS & POSTS" -->
+                <div class="stats__info stats__info--threads">
+                    <div class="stats__title">
+                        <p>Threads &amp; Posts</p>
+                        <span>$[recent_threads_link]</span>
+                        <span>$[recent_posts_link]</span>
+                    </div>
+                    <div class="stats__count">
+                        <p>
+                            <span>$[total_threads]</span><br>
+                           Threads
+                        </p>
+                    </div>
+                    <div class="stats__count">
+                        <p>
+                            <span>$[total_posts]</span><br>
+                           Posts
+                        </p>
+                    </div>
+                    {if $[last_updated_thread]}
+                        <div class="stats__latest stats__latest--post">
+                            <p>
+                                <span>Last Updated:</span><br>
+                                $[last_updated_thread.recent_link] by $[last_updated_thread.last_post.created_by]<br>
+                                $[last_updated_thread.last_post.created_on]
+                            </p>
+                        </div>
+                    {/if}
+                </div>
+                <!-- END "THREDS & POSTS" -->
+
+                <!-- BEGIN "MEMBERS" -->
+                <div class="stats__info stats__info--members">
+                    <div class="stats__title">
+                        <p>Members</p>
+                        <span><a href="/members" target="_parent">Member Directory</a></span>
+                    </div>
+                    <div class="stats__count">
+                        <p>
+                            <span>$[total_members]</span><br>
+                           Members
+                        </p>
+                    </div>
+                    <div class="stats__latest stats__latest--member">
+                        <p>Welcome to our newest member, $[newest_user]!</p>
+                    </div>
+                </div>
+                <!-- END "MEMBERS" -->
+
+            </div>
+            <!-- END CONTAINING ROW -->
+
+            <!-- BEGIN CONTAINING ROW -->
+            <div class="stats__row">
+
+                <!-- BEGIN AFFILIATES -->
+                <div class="stats__info stats__info--affiliates">
+
+                    <!-- BEGIN STATIC AFFILIATES -->
+                    <div class="affiliates affiliates--static">
+
+                        <!-- Repeat this line to add a new affiliate -->
+                        <a href="#" target="_blank" title=""><img src="http://placehold.it/88x31/2e353a/bcbdbd" alt=""></a>
+                        <a href="#" target="_blank" title=""><img src="http://placehold.it/88x31/2e353a/bcbdbd" alt=""></a>
+                        <a href="#" target="_blank" title=""><img src="http://placehold.it/88x31/2e353a/bcbdbd" alt=""></a>
+                        <a href="#" target="_blank" title=""><img src="http://placehold.it/88x31/2e353a/bcbdbd" alt=""></a>
+                        <a href="#" target="_blank" title=""><img src="http://placehold.it/88x31/2e353a/bcbdbd" alt=""></a>
+                        <a href="#" target="_blank" title=""><img src="http://placehold.it/88x31/2e353a/bcbdbd" alt=""></a>
+                        <a href="#" target="_blank" title=""><img src="http://placehold.it/88x31/2e353a/bcbdbd" alt=""></a>
+                        <a href="#" target="_blank" title=""><img src="http://placehold.it/88x31/2e353a/bcbdbd" alt=""></a>
+                        <a href="#" target="_blank" title=""><img src="http://placehold.it/88x31/2e353a/bcbdbd" alt=""></a>
+                        <a href="#" target="_blank" title=""><img src="http://placehold.it/88x31/2e353a/bcbdbd" alt=""></a>
+                        <a href="#" target="_blank" title=""><img src="http://placehold.it/88x31/2e353a/bcbdbd" alt=""></a>
+                        <a href="#" target="_blank" title=""><img src="http://placehold.it/88x31/2e353a/bcbdbd" alt=""></a>
+                        <a href="#" target="_blank" title=""><img src="http://placehold.it/88x31/2e353a/bcbdbd" alt=""></a>
+                        <a href="#" target="_blank" title=""><img src="http://placehold.it/88x31/2e353a/bcbdbd" alt=""></a>
+                        <a href="#" target="_blank" title=""><img src="http://placehold.it/88x31/2e353a/bcbdbd" alt=""></a>
+                        <a href="#" target="_blank" title=""><img src="http://placehold.it/88x31/2e353a/bcbdbd" alt=""></a>
+                        <a href="#" target="_blank" title=""><img src="http://placehold.it/88x31/2e353a/bcbdbd" alt=""></a>
+                        <a href="#" target="_blank" title=""><img src="http://placehold.it/88x31/2e353a/bcbdbd" alt=""></a>
+                        <a href="#" target="_blank" title=""><img src="http://placehold.it/88x31/2e353a/bcbdbd" alt=""></a>
+                        <a href="#" target="_blank" title=""><img src="http://placehold.it/88x31/2e353a/bcbdbd" alt=""></a>
+                        <a href="#" target="_blank" title=""><img src="http://placehold.it/88x31/2e353a/bcbdbd" alt=""></a>
+                        <a href="#" target="_blank" title=""><img src="http://placehold.it/88x31/2e353a/bcbdbd" alt=""></a>
+                        <a href="#" target="_blank" title=""><img src="http://placehold.it/88x31/2e353a/bcbdbd" alt=""></a>
+                        <a href="#" target="_blank" title=""><img src="http://placehold.it/88x31/2e353a/bcbdbd" alt=""></a>
+                        <a href="#" target="_blank" title=""><img src="http://placehold.it/88x31/2e353a/bcbdbd" alt=""></a>
+
+                    </div>
+                    <!-- END STATIC AFFILIATES -->
+
+                    <!-- BEGIN SCROLLING AFFILIATES -->
+                    <div class="affiliates affiliates--scrolling">
+                        <div class="scrolling-container">
+                            <span>
+
+                                <!-- Repeat this line to add a new affiliate -->
+                                <a href="#" target="_blank" title=""><img src="http://placehold.it/88x31/2e353a/bcbdbd" alt=""></a>
+                                <a href="#" target="_blank" title=""><img src="http://placehold.it/88x31/2e353a/bcbdbd" alt=""></a>
+                                <a href="#" target="_blank" title=""><img src="http://placehold.it/88x31/2e353a/bcbdbd" alt=""></a>
+                                <a href="#" target="_blank" title=""><img src="http://placehold.it/88x31/2e353a/bcbdbd" alt=""></a>
+                                <a href="#" target="_blank" title=""><img src="http://placehold.it/88x31/2e353a/bcbdbd" alt=""></a>
+                                <a href="#" target="_blank" title=""><img src="http://placehold.it/88x31/2e353a/bcbdbd" alt=""></a>
+                                <a href="#" target="_blank" title=""><img src="http://placehold.it/88x31/2e353a/bcbdbd" alt=""></a>
+                                <a href="#" target="_blank" title=""><img src="http://placehold.it/88x31/2e353a/bcbdbd" alt=""></a>
+                                <a href="#" target="_blank" title=""><img src="http://placehold.it/88x31/2e353a/bcbdbd" alt=""></a>
+                                <a href="#" target="_blank" title=""><img src="http://placehold.it/88x31/2e353a/bcbdbd" alt=""></a>
+
+                            </span>
+                        </div>
+                    </div>
+                    <!-- END SCROLLING AFFILIATES -->
+
+                </div>
+                <!-- END AFFILIATES -->
+
+                <!-- BEGIN DISCORD -->
+                <div class="stats__info stats__info--discord">
+
+                    <!-- iframe height will need to be adjusted if rows are added/removed from static affiliates -->
+                    <iframe src="https://discordapp.com/widget?id=334452201118236672&amp;theme=dark" width="535" height="330" allowtransparency="true" frameborder="0"></iframe>
+
+                </div>
+                <!-- END DISCORD -->
+
+            </div>
+            <!-- END CONTAINING ROW -->
+
+        </div>
+        <!-- END CONTENT -->
+
+    </div>
+    <!-- END INFO CENTER -->
+
+{/if}
+
+<script>
+$(document).ready(function() {
+    // Board Description Images modifier
+    (function modBoardImages() {
+        var $boardImgLink = $('.rfbdi-board_img_link');
+
+        $boardImgLink.each(function() {
+            var $boardImg  = $(this).children('.rfbdi-board_img');
+            var $boardItem = $(this).closest('.board.item');
+
+            // Create image container
+            $boardItem.find('.desc').after('<div class="image" />');
+            // Append the board image to the new container
+            $boardItem.find('.image').append($boardImg);
+            // Remove content generated by the plugin
+            $(this).siblings('.rfbdi-next_desc').remove();
+            $(this).closest('.main').removeClass('rfbdi-main');
+            $(this).remove();
+        });
+    })();
+});
+</script>

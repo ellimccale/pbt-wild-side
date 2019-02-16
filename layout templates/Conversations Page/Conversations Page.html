@@ -1,0 +1,39 @@
+<!-- BEGIN CONVERSATIONS CONTAINER -->
+<div class="container conversations">
+
+    <!-- BEGIN TITLE BAR -->
+    <div class="title-bar">
+        {if $[create_conversation_button]}
+            <ul class="controls"><li>$[create_conversation_button]</li></ul>
+        {/if}
+
+        <h2>Personal Messages: $[folder_pretty] ($[message_count])</h2>
+    </div>
+    <!-- END TITLE BAR -->
+
+    <!-- BEGIN CONTROL BAR -->
+    <div class="control-bar ui-helper-clearfix $[scroll_class]">
+        $[search]
+
+        <div class="controls">
+            $[folder_menu]
+            $[selection_menu]
+            $[action_menu]
+        </div>
+
+        $[pagination]
+    </div>
+    <!-- END CONTROL BAR -->
+
+    <!-- BEGIN CONVERSATION LIST -->
+    <div class="content">
+        <table class="list">
+            <tbody class="$[list_class]">
+                $[conversation_list]
+            </tbody>
+        </table>
+    </div>
+    <!-- END CONVERSATION LIST -->
+
+</div>
+<!-- END CONVERSATIONS CONTAINER -->

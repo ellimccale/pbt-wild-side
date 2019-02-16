@@ -1,0 +1,23 @@
+{foreach $[activity]}
+
+    <!-- BEGIN FOLLOWING -->
+    <tr>
+        <td class="avatar">
+            $[activity.user.avatar_medium]
+        </td>
+        <td class="main">
+            $[activity.user] $[activity.text]
+        </td>
+        <td class="time-container">
+            $[activity.date]
+        </td>
+    </tr>
+    <!-- END FOLLOWING -->
+
+{/foreach}
+
+{if !$[activity]}
+    <tr>
+        <td colspan="3" class="empty-result-message">There is no activity to display.</td>
+    </tr>
+{/if}

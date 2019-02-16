@@ -1,0 +1,84 @@
+<!-- BEGIN USER PROFILE -->
+<div class="container show-user">
+
+    <!-- BEGIN TITLE BAR -->
+    <div class="title-bar">
+        <h2>View Profile - $[user.name]</h2>
+    </div>
+    <!-- END TITLE BAR -->
+
+    <!-- BEGIN CONTENT -->
+    <div class="content">
+
+        <!-- BEGIN TABS -->
+        <div class="ui-tabMenu">
+            <ul class="ui-helper-clearfix">
+                {foreach $[menu]}<li{if $[menu.active]} class="ui-active"{/if}><a href="$[menu.href]">$[menu.text]</a></li>{/foreach}
+            </ul>
+        </div>
+        <!-- END TABS -->
+
+        <!-- BEGIN PROFILE HEADER -->
+        <div class="show-user__container show-user__container--header">
+            <div class="show-user__avatar">$[user.avatar]</div>
+
+            <div class="show-user__profile">
+                <div class="show-user__user">
+                    <span class="show-user__username" style="color: $[user.color];">$[user.name]</span>
+
+                    {if $[user.group]}
+                        $[user.group.name]
+                    {else}
+                        $[user.rank.name]
+                    {/if}
+                </div>
+
+                <div class="show-user__controls">
+                    <!-- Do not show options if the user is viewing their own profile -->
+                    {if $[user.id] != $[current_user.id]}
+                        $[options]
+                    {/if}
+
+                    $[send_message_button]
+
+                    $[edit_profile_button]
+
+                    $[follow_button]
+
+                    $[invite_button]
+
+                    <div class="show-user__online">
+                        <span>Username: $[user.username]</span>
+
+                        {if $[user.is_online]}
+                            <span class="bold">Member is Online</span>
+                        {else}
+                            <span>Last Online: $[user.last_online]</span>
+                        {/if}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END PROFILE HEADER -->
+
+        $[content]
+    </div>
+    <!-- END CONTENT -->
+
+</div>
+<!-- END USER PROFILE -->
+
+<script>
+$(document).ready(function() {
+    // Remove custom profile fields container if it is empty
+    (function removeEmptyContainer() {
+        var $children = $('.show-user__fields').children('table');
+
+        $children.each(function() {
+            if ( !$.trim($(this).html()).length ) {
+                $(this).parent().remove();
+            }
+        });
+    })();
+});
+</script>

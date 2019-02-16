@@ -1,0 +1,33 @@
+{foreach $[thread]}
+
+    <!-- BEGIN THREADS -->
+    <tr id="$[thread.content_id]" class="$[thread.content_class]">
+        <td class="main clickable" title="$[thread.short_content]">
+            <span class="link target">$[thread]</span><br>
+            $[thread.replies_count] repl{if $[thread.num_posts] != 2}ies{else}y{/if} to $[thread.created_by]
+            $[thread.labels]
+        </td>
+        <td class="checkbox clickable">$[thread.checkbox]</td>
+        <td class="icons">
+            $[thread.icons]
+            {if $[thread.pagination]}<div class="ui-micro-pagination">$[thread.pagination]</div>{/if}
+        </td>
+        <td class="views">
+            <span>$[thread.views]</span><br>
+            view{if $[thread.views] != 1}s{/if}
+        </td>
+        <td class="latest">
+            $[thread.last_post.created_on]<br>
+            by $[thread.last_post.created_by]
+        </td>
+    </tr>
+    <tr class="spacer"><td colspan="5"></td></tr>
+    <!-- END THREADS -->
+
+{/foreach}
+
+{if !$[thread]}
+    <tr>
+        <td class="center" colspan="5">No threads were found.</td>
+	</tr>
+{/if}

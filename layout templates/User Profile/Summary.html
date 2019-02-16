@@ -1,0 +1,191 @@
+<!-- BEGIN SUMMARY -->
+$[form.header]
+
+<table>
+    <tr>
+        <td class="show-user__container show-user__container--summary">
+            {if $[can.update_status]}
+
+                <!-- BEGIN STATUS -->
+                <div class="show-user__status content-box">
+                    <table>
+                        <tr>
+                            <td class="status-input">
+                                $[form.update.input]
+                            </td>
+                            <td class="status-submit">
+                                $[form.submit.button]
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- END STATUS -->
+
+            {/if}
+
+            {if $[user.warning.bar]}
+
+                <!-- BEGIN WARNING BAR -->
+                <div class="show-user__warning content-box">
+                    <table><tr><td class="headings">Warning Level: </td><td>$[user.warning.bar]</td></tr></table>
+                </div>
+                <!-- END WARNING BAR -->
+
+            {/if}
+
+            <!-- BEGIN PROFILE FIELDS -->
+            <div class="show-user__fields content-box">
+                <table>
+                    {if $[user.personal_text.message]}
+                        <tr>
+                            <td class="headings">Latest Status:</td>
+                            <td>$[user.personal_text.message]</td>
+                        </tr>
+                    {/if}
+                    {if $[user.custom_title]}
+                        <tr>
+                            <td class="headings">Custom Title:</td>
+                            <td>$[user.custom_title]</td>
+                        </tr>
+                    {/if}
+                    {if $[user.email]}
+                        <tr>
+                            <td class="headings">Email:</td>
+                            <td>$[user.email]</td>
+                        </tr>
+                    {/if}
+                    {if $[user.website]}
+                        <tr>
+                            <td class="headings">Web Site:</td>
+                            <td>$[user.website]</td>
+                        </tr>
+                    {/if}
+                    {if $[user.birthday]}
+                        <tr>
+                            <td class="headings">Birthday:</td>
+                            <td>$[user.birthday]</td>
+                        </tr>
+                    {/if}
+                    {if $[user.age]}
+                        <tr>
+                            <td class="headings">Age:</td>
+                            <td>$[user.age]</td>
+                        </tr>
+                    {/if}
+                    {if $[user.gender]}
+                        <tr>
+                            <td class="headings">Gender:</td>
+                            <td>$[user.gender.text]</td>
+                        </tr>
+                    {/if}
+                    {if $[user.location]}
+                        <tr>
+                            <td class="headings">Location:</td>
+                            <td>$[user.location]</td>
+                        </tr>
+                    {/if}
+                    <tr>
+                        <td class="headings">Date Registered:</td>
+                        <td>$[user.registered_on]</td>
+                    </tr>
+                    <tr>
+                        <td class="headings">Posts:</td>
+                        <td>$[user.posts]</td>
+                    </tr>
+                    <tr>
+                        <td class="headings">Likes:</td>
+                        <td>$[user.likes]</td>
+                    </tr>
+                    <tr>
+                        <td class="headings money_text"></td>
+                        <td class="money_amount"><span class="money_symbol"></span></td>
+                    </tr>
+                </table>
+            </div>
+            <!-- END PROFILE FIELDS -->
+
+            <!-- BEGIN CUSTOM PROFILE FIELDS -->
+            <div class="show-user__fields content-box">
+                <table>
+                    {foreach $[user.custom_field]}
+                    	{if $[user.custom_field.name] == "Application"}
+                    		<tr class="$[user.custom_field.content_class]">
+                                <td class="headings">
+                                    <a href="$[user.custom_field.value]" target="_parent">Application</a>
+                                </td>
+                                <td></td>
+                            </tr>
+                    	{elseif $[user.custom_field.name] == "Tracker"}
+                    		<tr class="$[user.custom_field.content_class]">
+                                <td class="headings">
+                                    <a href="$[user.custom_field.value]" target="_parent">Tracker</a>
+                                </td>
+                                <td></td>
+                            </tr>
+                    	{else}
+                            <tr class="$[user.custom_field.content_class]">
+                                <td class="headings">
+                                    $[user.custom_field.name]:
+                                </td>
+                                <td>
+                                    $[user.custom_field.value]
+                                </td>
+                            </tr>
+                    	{/if}
+                    {/foreach}
+                </table>
+            </div>
+            <!-- END CUSTOM PROFILE FIELDS -->
+
+            <!-- BEGIN USER RECENT THREADS/POSTS -->
+            <div class="show-user__recent content-box">
+                $[recent_posts_link]<br>
+                $[recent_threads_created_link]
+            </div>
+            <!-- END USER RECENT THREADS/POSTS -->
+
+            {if $[user.signature]}
+
+                <!-- BEGIN SIGNATURE -->
+                <div class="show-user__signature content-box">
+                    $[user.signature]
+                </div>
+                <!-- END SIGNATURE -->
+
+            {/if}
+        </td>
+        {if $[following] ||  $[follower]}
+            <td class="spacer"></td>
+            <td class="show-user__container show-user__container--friends">
+                {if $[following]}
+
+                    <!-- BEGIN FOLLOWING -->
+                    <div class="show-user__follow content-box">
+                        <h4>$[view_following_link]</h4>
+                        {foreach $[following]}
+                            $[following.microprofile]
+                        {/foreach}
+                    </div>
+                    <!-- END FOLLOWING -->
+
+                {/if}
+
+                {if $[follower]}
+
+                    <!-- BEGIN FOLLOWERS -->
+                    <div class="show-user__follow content-box">
+                        <h4>$[view_followers_link]</h4>
+                        {foreach $[follower]}
+                            $[follower.microprofile]
+                        {/foreach}
+                    </div>
+                    <!-- END FOLLOWERS -->
+
+                {/if}
+            </td>
+        {/if}
+    </tr>
+</table>
+
+$[form.footer]
+<!-- END SUMMARY -->
