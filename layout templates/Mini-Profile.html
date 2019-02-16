@@ -1,69 +1,73 @@
 <!-- BEGIN MINI PROFILE -->
 <div class="$[miniprofile_class]">
-  {if $[user.custom_title]}
-      <span class="mini-profile__custom-title">$[user.custom_title]</span>
-  {/if}
+    {if $[user.custom_title]}
+        <span class="mini-profile__custom-title">$[user.custom_title]</span>
+    {/if}
 
-  <div class="mini-profile__user">
-      {if !$[user.is_guest]}
-          <span class="mini-profile__status{if $[user.is_online]} mini-profile__status--online{/if}" title="{if $[user.is_online]}Online{else}Offline{/if}"></span>
-      {/if}
+    <div class="mini-profile__user">
+        {if !$[user.is_guest]}
+            <span class="mini-profile__status{if $[user.is_online]} mini-profile__status--online{/if}" title="{if $[user.is_online]}Online{else}Offline{/if}"></span>
+        {/if}
 
-      $[user]
-  </div>
+        $[user]
+    </div>
 
-  {if !$[user.is_guest]}
-      {if $[user.group]}
-          <span class="mini-profile__group">$[user.group.name]</span>
-      {elseif $[user.rank]}
-          <span class="mini-profile__group">$[user.rank.name]</span>
-      {/if}
+    {if !$[user.is_guest]}
+        {if $[user.group]}
+            <span class="mini-profile__group">$[user.group.name]</span>
+        {elseif $[user.rank]}
+            <span class="mini-profile__group">$[user.rank.name]</span>
+        {/if}
 
-      {if $[user.avatar]}
-          <div class="mini-profile__avatar">$[user.avatar]</div>
-      {/if}
+        {if $[user.avatar]}
+            <div class="mini-profile__avatar">$[user.avatar]</div>
+        {/if}
 
-    $[user.warning.bar]
+        $[user.warning.bar]
 
-      <div class="mini-profile__stats">
-          {if $[user.gender]}
-            <span class="mini-profile__stat">$[user.gender.text]</span>
-          {/if}
+        <div class="mini-profile__stats">
+            {if $[user.gender]}
+                <span class="mini-profile__stat">$[user.gender.text]</span>
+            {/if}
 
-          {foreach $[user.mini_custom_field]}
-              {if $[user.mini_custom_field.name] == "Orientation"}
-                  <span class="mini-profile__stat">{if $[user.mini_custom_field.value]}$[user.mini_custom_field.value]{else}N/A{/if}</span>
-              {/if}
+            {foreach $[user.mini_custom_field]}
+                {if $[user.mini_custom_field.name] == "Orientation"}
+                    <span class="mini-profile__stat">{if $[user.mini_custom_field.value]}$[user.mini_custom_field.value]{else}N/A{/if}</span>
+                {/if}
 
-              {if $[user.mini_custom_field.name] == "Relationship Status"}
-                  <span class="mini-profile__stat">{if $[user.mini_custom_field.value]}$[user.mini_custom_field.value]{else}N/A{/if}</span>
-              {/if}
-          {/foreach}
-      </div>
+                {if $[user.mini_custom_field.name] == "Relationship Status"}
+                    <span class="mini-profile__stat">{if $[user.mini_custom_field.value]}$[user.mini_custom_field.value]{else}N/A{/if}</span>
+                {/if}
+            {/foreach}
+        </div>
 
-      {if $[user.personal_text.message]}
-          <span class="mini-profile__personal-text">$[user.personal_text]</span>
-      {/if}
+        {if $[user.personal_text.message]}
+            <span class="mini-profile__personal-text">$[user.personal_text]</span>
+        {/if}
 
-      <div class="mini-profile__links">
-          {foreach $[user.mini_custom_field]}
-              {if $[user.mini_custom_field.name] == "Application"}
-              <a href="$[user.mini_custom_field.value]" target="_parent">Application</a>
-              {/if}
+        <div class="mini-profile__links">
+            {foreach $[user.mini_custom_field]}
+                {if $[user.mini_custom_field.name] == "Application"}
+                <a href="$[user.mini_custom_field.value]" target="_parent">Application</a>
+                {/if}
 
-              {if $[user.mini_custom_field.name] == "Tracker"}
-              <a href="$[user.mini_custom_field.value]" target="_parent">Tracker</a>
-              {/if}
-          {/foreach}
-      </div>
+                {if $[user.mini_custom_field.name] == "Tracker"}
+                <a href="$[user.mini_custom_field.value]" target="_parent">Tracker</a>
+                {/if}
+            {/foreach}
+        </div>
 
-      {foreach $[user.mini_custom_field]}
-          {if $[user.mini_custom_field.name] == "Roleplayed by"}
-              <span class="mini-profile__roleplayed-by">Roleplayed by $[user.mini_custom_field.value]</span>
-          {/if}
-      {/foreach}
-  {else}
-      <span class="mini-profile__group">Guest</span>
-  {/if}
+        {foreach $[user.mini_custom_field]}
+            {if $[user.mini_custom_field.name] == "Roleplayed by"}
+                <span class="mini-profile__roleplayed-by">Roleplayed by $[user.mini_custom_field.value]</span>
+            {/if}
+        {/foreach}
+    {else}
+        <span class="mini-profile__group">Guest</span>
+
+        {if $[user.avatar]}
+            <div class="mini-profile__avatar">$[user.avatar]</div>
+        {/if}
+    {/if}
 </div>
 <!-- END MINI PROFILE -->
