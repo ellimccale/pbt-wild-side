@@ -855,7 +855,7 @@
  .ui-pagination li.ui-pagination-prev > a:hover,
  .ui-pagination li.ui-pagination-next > a:hover { background-color: transparent; .box-shadow(none); }
  
- .ui-micro-pagination { margin-left: 23px; overflow: hidden; display: inline-block; float: right; }
+ .ui-micro-pagination { margin-left: 23px; overflow: hidden; display: block; float: right; }
  .ui-micro-pagination ul li { cursor: pointer; float: left; }
  .ui-micro-pagination ul li + li { margin-left: 5px; }
  .ui-micro-pagination ul li > a { background-color: @pagination_hover_color; padding: 7px 5px; font: normal normal 0.9rem @default_forum_text_font_family; text-decoration: none; color: @gray_light; display: inline-block; }
@@ -1388,7 +1388,7 @@
  
  .grp_recipients_div { display: none; }
  .grp_recipients_div a { padding-top: 10px; display: block; clear: both; }
- .grp_recipients_div li { background-color: @navy_med; width: 240px; margin: 3px; padding: 3px 22px 3px 5px; overflow: hidden; float: left; display: inline-block; position: relative; }
+ .grp_recipients_div li { background-color: @navy_med; width: 240px; margin: 3px; padding: 3px 22px 3px 5px; overflow: hidden; display: block; float: left; position: relative; }
  
  
  /* BBCode Editor
@@ -1662,7 +1662,8 @@
  .mini-profile__status { background-color: @gray_med; width: 7px; height: 7px; margin-top: -4px; border-radius: 50%; display: block; position: absolute; top: 50%; left: 10px; }
  .mini-profile__status--online { background-color: #19cf86; }
  
- .mini-profile__avatar { max-width: 200px; max-height: 200px; margin-top: 5px; overflow-x: hidden; overflow-y: hidden; vertical-align: middle; }
+ .mini-profile__avatar { margin-top: 5px; overflow-x: hidden; overflow-y: hidden; vertical-align: middle; }
+ .mini-profile__avatar { width: 200px; height: auto; max-height: 200px; }
  
  .mini-profile__stats { font-size: 0.9rem; text-transform: uppercase; }
  .mini-profile__stat + .mini-profile__stat::before { content: "/"; padding-left: 5px; padding-right: 9px; color: fade(@gray_med, 50%); display: inline; }
@@ -1705,7 +1706,7 @@
  .avatar_size_default > div,
  .avatar-wrapper.avatar_size_default > div > div { width: 200px; height: 200px; }
  .avatar_size_default img,
- .avatar_size_default default { max-width: 200px; max-height: 200px; }
+ .avatar_size_default default { width: 200px; height: auto; max-height: 200px; }
  
  .avatar_size_medium,
  .avatar_size_medium embed,
@@ -1713,14 +1714,14 @@
  .avatar_size_medium > div,
  .avatar-wrapper.avatar_size_medium > div > div { width: 75px; height: 75px; }
  .avatar_size_medium img,
- .avatar_size_medium default { max-width: 75px; max-height: 75px; }
+ .avatar_size_medium default { width: 75px; height: auto; max-height: 75px; }
  
  .avatar_size_small,
  .avatar_size_small embed,
  .avatar_size_small object,
  .avatar_size_small > div, .avatar-wrapper.avatar_size_small > div > div { width: 50px; height: 50px; }
  .avatar_size_small img,
- .avatar_size_small default { max-width: 50px; max-height: 50px; }
+ .avatar_size_small default { width: 50px; height: auto; max-height: 50px; }
  
  .avatar_size_quote,
  .avatar_size_quote embed,
@@ -1728,7 +1729,7 @@
  .avatar_size_quote > div,
  .avatar-wrapper.avatar_size_quote > div > div { width: 30px; height: 30px; }
  .avatar_size_quote img,
- .avatar_size_quote default { max-width: 30px; max-height: 30px; }
+ .avatar_size_quote default { width: 30px; height: auto; max-height: 30px; }
  
  
  /* ======================================================
