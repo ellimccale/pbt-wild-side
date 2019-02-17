@@ -13,6 +13,7 @@
 - Slightly adjusted top padding of buttons and `submit` inputs
 - Reduced right padding on WYSIWYG submit container
 - Updated Font Awesome script to fix pagination bug
+- Added support for Monetary System bank and donations
 
 ### 1.0.2
 - Initial implementation

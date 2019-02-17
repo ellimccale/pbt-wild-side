@@ -765,6 +765,14 @@ table.list > tbody > tr.dtt_content > td.dtt_tabs_content > div { text-align: ce
 
 #navigation-tree + #content > .container:first-child > .title-bar { min-height: 40px; padding-top: 0; }
 
+/**
+ * I hate this, I'm sorry
+ * It's the only way to control the title bars on
+ * the Monetary System donation page
+ */
+
+#navigation-tree + #content > .container[style="display: block;"] > .title-bar { min-height: 40px; padding-top: 0; }
+
 .container > .title-bar > .controls { margin-top: -19px; float: left; }
 .container > .title-bar > .controls li a,
 .container > .title-bar > .controls li div { background-color: @navy_dark; height: 38px; padding: 0 22px; font: 1.1rem @default_forum_text_font_family; line-height: 38px !important; text-transform: uppercase; text-decoration: none; color: @gray_med; .box-sizing(content-box); }
@@ -1775,6 +1783,8 @@ input[type="text"].short { width: 50px; }
 input[type="text"].search-input { width: inherit; }
 input.date { width: 77px; }
 input.time { width: 55px; }
+
+div#bank-controls-buttons-wrapper input { height: 38px !important; margin-right: 5px !important; border: 0 !important; }
 
 textarea { background: @navy_med; border: 0; font: 1.2rem @default_forum_text_font_family; line-height: 2; letter-spacing: 0.075em; color: @gray_med; resize: none; }
 
