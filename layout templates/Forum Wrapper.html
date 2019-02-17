@@ -16,20 +16,26 @@
         <script>
         $(document).ready(function() {
             /**
-             * Create darkened overlay behind modals
-             * Has to be in `head` to load in the right order
+             * jQuery UI Dialog changes
+             * Has to be in `<head>` to load in the right order.
+             *
+             * 1. 180 = Approximation of height of dialog padding, title bar, and footer
+             * 2. Manually set `max-height` of dialog content because CSS `vh` unit
+             *    doesn't work as I'd like it to on mobile browsers
+             * 3. Create darkened overlay behind dialogs
+             * 4. Offset positioning for top bar
              */
             (function darkenDialogOverlay() {
-                var $dialogSelectors = $('#guests-online, #poll-dialog, #threads-list-search-dialog, #posts-list-search-dialog, #members-list-search-dialog, #image-avatar-editor-container');
+                var open_ref = $.ui.dialog.prototype.open;
+                var trueViewportHeight = window.innerHeight - 180; // 1
 
-                if ($dialogSelectors.length) {
-                    $dialogSelectors.dialog('option', 'modal', true);
-                } else {
-                    $(document).on('dialogcreate', function(event) {
-                        if (event.target.id == 'guests-online' || 'poll-dialog' || 'threads-list-search-dialog' || 'posts-list-search-dialog' || 'members-list-search-dialog' || 'image-avatar-editor-container') {
-                            $(event.target).dialog('option', 'modal', true);
-                        }
-                    });
+                $.ui.dialog.prototype.open = function(){
+                    $('.ui-dialog div.ui-dialog-content').css('max-height', (trueViewportHeight + 'px')); // 2
+
+                    this.options.modal = true; // 3
+                    this.options.position = { offset: "0 27px" }; // 4
+
+                    open_ref.apply(this, arguments);
                 }
             })();
         });
