@@ -478,7 +478,7 @@
 
             // Tabbed Welcome Table
             (function welcomeTabs() {
-                var $currentTab = 0;
+                var currentTab = 0;
 
                 function openTab(clickedTab) {
                     var $thisTab = $('.tabs__list-item').index(clickedTab);
@@ -488,7 +488,7 @@
                     $('.tabs__content').hide();
                     $('.tabs__content:eq(' + $thisTab + ')').show();
 
-                    $currentTab = $thisTab;
+                    currentTab = $thisTab;
                 }
 
                 $('.tabs__list-item').click(function() { 
@@ -496,65 +496,77 @@
                     return false; 
                 });
                 
-                $('.tabs__list-item:eq(' + $currentTab + ')').click();
+                $('.tabs__list-item:eq(' + currentTab + ')').click();
             })();
 
             // Replace default icons with Font Awesome glyphs
-            function replaceDefaultIcons() {
-                // Post interaction icons
-                $('.button .status > img').replaceWith('<i class="fas fa-cog"></i>');
-                $('.ui-search .search-filters-button .icon > img').replaceWith('<i class="fas fa-search"></i>');
+            (function replaceDefaultIcons() {
+                // Icons that need to be updated on page change
+                function paginateIcons() {
+                    // Post/message interaction icons
+                    $('.button .status > img').replaceWith('<i class="fas fa-cog" title="Options"></i>');
+                    $('.ui-search .search-filters-button .icon > img').replaceWith('<i class="fas fa-search" title="Search"></i>');
 
-                function replaceLikeButton() {
-                    var $likeButtonImg = $('a.likes-button');
+                    // Like button icon
+                    function replaceLikeButton() {
+                        var $likeButtonImg = $('a.likes-button');
 
-                    $likeButtonImg.each(function() {
+                        $likeButtonImg.each(function() {
+                            if ($(this).hasClass('liked')) {
+                                $(this).children('img').replaceWith('<i class="fas fa-heart"></i>');
+                            } else {
+                                $(this).children('img').replaceWith('<i class="far fa-heart"></i>');
+                            }
+                        });
+                    }
+                    
+                    function updateLikeButton() {
                         if ($(this).hasClass('liked')) {
-                            $(this).children('img').replaceWith('<i class="fas fa-heart"></i>');
+                            $(this).children('i').removeClass('fas').addClass('far');
                         } else {
-                            $(this).children('img').replaceWith('<i class="far fa-heart"></i>');
+                            $(this).children('i').removeClass('far').addClass('fas');
+                        }
+                    }
+
+                    replaceLikeButton();
+                    $('a.likes-button').on('click', updateLikeButton);
+
+                    // Thread status icons
+                    var lockIcon = ('<i class="fas fa-lock" aria-hidden="true"></i>');
+                    var bookmarkIcon = ('<i class="far fa-bookmark" aria-hidden="true"></i>');
+                    var pollIcon = ('<i class="far fa-chart-bar" aria-hidden="true"></i>');
+
+                    function replaceThreadIcons(oldIcon, newIcon) {
+                        $(oldIcon).each(function() {
+                            var $this = $(this);
+
+                            if (!$this.find('i').length) {
+                                $this.append(newIcon);
+                                $this.find('img').remove();
+                            }
+                        });
+                    }
+
+                    replaceThreadIcons('.lock_icon', lockIcon);
+                    replaceThreadIcons('.bookmark_icon', bookmarkIcon);
+                    replaceThreadIcons('.poll_icon', pollIcon);
+
+                    // Checkmark icon
+                    var $checkContainer = $('.ui-poll .results tr td .select-box');
+
+                    $checkContainer.each(function() {
+                        var $this = $(this);
+
+                        if (!$this.find('i').length) {
+                            $this.append('<i class="fas fa-check" aria-hidden="true"></i>');
+                            $this.children('img').remove();
                         }
                     });
                 }
-                
-                function updateLikeButton() {
-                    if ($(this).hasClass('liked')) {
-                        $(this).children('i').removeClass('fas').addClass('far');
-                    } else {
-                        $(this).children('i').removeClass('far').addClass('fas');
-                    }
-                }
 
-                replaceLikeButton();
-                $('a.likes-button').on('click', updateLikeButton);
-
-                // Thread status icons
-                $('.lock_icon').append('<i class="fas fa-lock"></i>');
-                $('.bookmark_icon').append('<i class="far fa-bookmark"></i>');
-                $('.poll_icon').append('<i class="far fa-chart-bar"></i>');
-
-                var $trickyIcons = ['.lock_icon','.bookmark_icon','.poll_icon'];
-
-                $.each($trickyIcons, function(index, value) {
-                    $(value).each(function() {
-                        if ($(this).children('img').css('display') == 'none') {
-                            $(this).css('display','none');
-                        };
-                        $(this).find('img').remove();
-                    });
-                });
-
-                // Checkmark icon
-                var $checkContainer = $('.ui-poll .results tr td .select-box');
-
-                $checkContainer.each(function() {
-                    $(this).append($('<i class="fas fa-check"></i>'));
-                    $(this).children('img').remove();
-                });
-            }
-
-            replaceDefaultIcons();
-            pb.events.on('afterSearch', replaceDefaultIcons);
+                paginateIcons();
+                pb.events.on('afterSearch', paginateIcons);
+            })();
         });
         </script>
     </body>
