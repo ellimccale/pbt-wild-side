@@ -11,6 +11,7 @@
 - Slightly reduced vertical space in between content boxes to appear to match horizontal space
 - Slightly adjusted top padding of secondary title bars (home page)
 - Slightly adjusted top padding of buttons and `submit` inputs
+- Reduced right padding on WYSIWYG submit container
 
 ### 1.0.2
 - Initial implementation
