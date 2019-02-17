@@ -675,6 +675,7 @@ a.hover-avatar img { position: absolute; top: 0; left: 0; -webkit-transition: al
 a.hover-avatar:hover span { opacity: 1; -webkit-transform: translateY(-50%); -ms-transform: translateY(-50%); transform: translateY(-50%); }
 a.hover-avatar:hover img { opacity: 0.4; -webkit-filter: blur(2px); filter: blur(2px); -webkit-transform: scale(1.1); -ms-transform: scale(1.1); transform: scale(1.1); }
 a.hover-avatar--staff { background-color: @navy_deep; width: 84.9px; height: 147px; }
+a.hover-avatar--staff img { width: auto; height: 147px; }
 a.hover-avatar--tp { background-color: @navy_dark; width: 100px; height: 100px; }
 
 
@@ -852,6 +853,14 @@ table.list > tbody > tr.dtt_content > td.dtt_tabs_content > div { text-align: ce
 #guests-online table { width: 150px; margin: auto; }
 #guests-online th,
 #guests-online td { padding: 2px 0; text-align: left; }
+
+/* --- Participated Dialog --- */
+
+#recent-threads { max-height: 450px !important; }
+#recent-threads th { padding: 15px 10px 8px; font-size: 0.9rem; text-transform: uppercase; }
+#recent-threads .checkbox { padding: 0 !important; }
+#recent-threads .subject { padding-left: 0 !important; text-align: left; }
+#recent-threads .latest { width: 40%; text-align: right; }
 
 
 /* ======================================================
@@ -1873,7 +1882,7 @@ select { background-color: @navy_med; height: 33px; border: 0; padding: 2px; fon
 
 
 /* Affiliates
-* ====================================================== */
+ * ====================================================== */
 
 @-webkit-keyframes marquee {
   0%   { -webkit-transform: translate(0, 0); transform: translate(0, 0); }

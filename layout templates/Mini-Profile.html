@@ -48,11 +48,11 @@
         <div class="mini-profile__links">
             {foreach $[user.mini_custom_field]}
                 {if $[user.mini_custom_field.name] == "Application"}
-                <a href="$[user.mini_custom_field.value]" target="_parent">Application</a>
+                    <a href="$[user.mini_custom_field.value]" target="_parent">Application</a>
                 {/if}
 
                 {if $[user.mini_custom_field.name] == "Tracker"}
-                <a href="$[user.mini_custom_field.value]" target="_parent">Tracker</a>
+                    <a href="$[user.mini_custom_field.value]" target="_parent">Tracker</a>
                 {/if}
             {/foreach}
         </div>
