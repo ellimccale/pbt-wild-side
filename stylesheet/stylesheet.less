@@ -763,15 +763,15 @@ table.list > tbody > tr.dtt_content > td.dtt_tabs_content > div { text-align: ce
  * first title bar on the page
  */
 
-#navigation-tree + #content > .container:first-child > .title-bar { min-height: 40px; padding-top: 0; }
+.container:first-child > .title-bar { min-height: 40px; padding-top: 0; }
 
 /**
- * I hate this, I'm sorry
+ * I hate this, it's a bad selector.
  * It's the only way to control the title bars on
- * the Monetary System donation page
+ * the Monetary System donation page.
  */
 
-#navigation-tree + #content > .container[style="display: block;"] > .title-bar { min-height: 40px; padding-top: 0; }
+ .container[style="display: block;"] > .title-bar { min-height: 40px; padding-top: 0; }
 
 .container > .title-bar > .controls { margin-top: -19px; float: left; }
 .container > .title-bar > .controls li a,
