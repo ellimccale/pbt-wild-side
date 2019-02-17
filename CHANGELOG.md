@@ -10,6 +10,7 @@
 - Fixed height of title bars that don't have the navigation tree in them
 - Slightly reduced vertical space in between content boxes to appear to match horizontal space
 - Slightly adjusted top padding of secondary title bars (home page)
+- Slightly adjusted top padding of buttons and `submit` inputs
 
 ### 1.0.2
 - Initial implementation
