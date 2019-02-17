@@ -8,7 +8,7 @@
 - Updated Font Awesome script to fix pagination bug
 - Fixed misalignment on labels in Post/Message layout
 - Fixed height of title bars that don't have the Navigation Tree in them
-- Hid `<br>` tags that are direct descendents of the Mini Profile
+- Hid `<br>` tags that are direct descendants of the Mini Profile
   (the Monetary Shop plugin generates a `<br>` that disrupts the visual flow of the MP)
 - Slightly reduced vertical space in between content boxes to appear to match horizontal space
 - Slightly adjusted top padding of secondary title bars (Home page)
