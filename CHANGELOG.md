@@ -4,6 +4,7 @@
 - Updated dialog code to better add modal backgrounds
 - Fixed misalignment on labels on Post/Message layout
 - Added spacer between Summary items
+- Added more vertical space between sections on posting page
 
 ### 1.0.2
 - Initial implementation
