@@ -753,10 +753,17 @@ table.list > tbody > tr.dtt_content > td.dtt_tabs_content > div { text-align: ce
 @title_text_transform: uppercase;
 @title_text_align: right;
 
-.container > .title-bar { background-color: @title_bar_background_color; min-height: 40px; padding: 0 25px 18px; text-align: @title_text_align; }
+.container > .title-bar { background-color: @title_bar_background_color; min-height: 80px; padding: 40px 25px 18px; text-align: @title_text_align; }
 .container > .title-bar h1,
 .container > .title-bar h2,
 .container > .title-bar h3 { font-style: @title_text_font_style; font-weight: @title_text_font_weight; font-size: @title_text_font_size; font-family: @title_text_font_family; line-height: 22px !important; letter-spacing: 0; text-transform: @title_text_transform; text-align: @title_text_align; color: @title_text_color; display: inline; }
+
+/**
+ * Make the navigation tree appear to be part of the
+ * first title bar on the page
+ */
+
+#navigation-tree + #content > .container:first-child > .title-bar { min-height: 40px; padding-top: 0; }
 
 .container > .title-bar > .controls { margin-top: -19px; float: left; }
 .container > .title-bar > .controls li a,
