@@ -1,3 +1,6 @@
+### 1.1.1
+- Removed extra vertical space around Mini Profile avatars, for real this time
+
 ### 1.1.0
 - Added default avatar for guests
 - Added separator between Thread/Conversation Summary items

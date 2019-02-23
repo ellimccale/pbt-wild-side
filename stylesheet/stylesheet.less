@@ -1688,7 +1688,11 @@ a.likes-button.liked i.fas.fa-heart { color: #c95c76; }
 .mini-profile__status--online { background-color: #19cf86; }
 
 .mini-profile__avatar { margin-top: 5px; overflow-x: hidden; overflow-y: hidden; vertical-align: middle; }
-.mini-profile__avatar { width: 200px; height: auto; max-height: 200px; }
+.mini-profile__avatar .avatar_size_default,
+.mini-profile__avatar .avatar_size_default embed,
+.mini-profile__avatar .avatar_size_default object,
+.mini-profile__avatar .avatar_size_default > div,
+.mini-profile__avatar .avatar-wrapper.avatar_size_default > div > div { width: 200px; height: auto; max-height: 200px; }
 
 .mini-profile__stats { font-size: 0.9rem; text-transform: uppercase; }
 .mini-profile__stat + .mini-profile__stat::before { content: "/"; padding-left: 5px; padding-right: 9px; color: fade(@gray_med, 50%); display: inline; }
