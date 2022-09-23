@@ -1,4 +1,6 @@
 # The Wild Side
+[Preview](https://wild-side-theme.proboards.com/)
+
 *The Wild Side* is a deep gray-blue theme with light blue accents and a boxy layout, built on commission for use with the free forum software [ProBoards](https://proboards.com/). It features a sticky navigation menu, tabbed flexbox welcome table, and support for a number of plugins. Developed using my v5 theme base, [*cast*](https://github.com/elli-mccale/pbt-cast).
 
 ## Use
