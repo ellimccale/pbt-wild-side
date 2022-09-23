@@ -1,8 +1,8 @@
 # The Wild Side
-*The Wild Side* is a deep gray-blue theme with light blue accents and a boxy layout, built explicity for use on [The Wild Side](http://thewildside.boards.net/) with the free forum software [ProBoards](https://proboards.com/). It features a sticky navigation menu, tabbed flexbox welcome table, and support for a number of plugins. Built using my v5 theme base, [*cast*](https://github.com/elli-mccale/pbt-cast).
+*The Wild Side* is a deep gray-blue theme with light blue accents and a boxy layout, built on commission for use with the free forum software [ProBoards](https://proboards.com/). It features a sticky navigation menu, tabbed flexbox welcome table, and support for a number of plugins. Developed using my v5 theme base, [*cast*](https://github.com/elli-mccale/pbt-cast).
 
 ## Use
-This theme is intended for the private use of The Wild Side, and may not be used in any other respect without my express written permission.
+This theme is intended for private use and may not be used in any other respect without my express written permission. You are free to view the code, however.
 
 ## Included
 1. Support for the [Monetary System](https://github.com/PopThosePringles/ProBoards-Monetary) plugin
